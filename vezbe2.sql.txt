@@ -1,0 +1,81 @@
+-- 1. Izdvojiti sve informacije o postojecim studenitma. 
+--db2 "select * from da.dosije"
+
+--db2 "select indeks, idprograma, ime, prezime, pol, mestorodjenja, idstatusa, datupisa, datdiplomiranja from da.dosije"
+
+-- 2. Izdvojiti brojeve indeksa studenata koji su polagali neki ispit
+--db2 "select indeks from da.ispit"
+
+-- 3. Izdvojiti razlicite brojeve indeksa studenata koji su polagali neki ispit.
+--db2 "select distinct indeks from da.ispit"
+
+-- 4. Izdvojiti listu parova oznaka roka, ocena za sva polaganja bez ponavljanja.
+--db2 "select distinct OznakaRoka, Ocena from da.ispit"
+
+
+--5. Izdvojiti brojeve indeksa i prezimena studenata koji se zovu â€˜Nikolaâ€™ ili su rodeni u Beogradu
+-- select indeks, prezime from da.dosije where ime ='Nikola' or mestorodjenja ='Beograd';
+
+-- 6. Izdvojiti id-jeve predmeta koji nose bar 6 bodova.
+-- select id from da.predmet where espb >=6;
+
+-- 7. Izdvojiti sva uspesna polaganja ispita u Septembru 4 2019. godine.
+-- select skgodina, oznakaroka from da.ispit where skgodina = 2019 and oznakaroka ='sep4' and ocena >5;
+
+-- 8. Izdvojiti za svako uspesno polaganje indeks, ocenu i ocenu sracunatu preko bodova sa ispita,
+-- kao prvi veci ceo broj od celobrojnog deljenja broja bodova sa 10.
+
+-- select ocena, indeks, (poeni-1)/10+1 from da.ispit where ocena >5;
+
+-- 9. Izdvojiti brojeve indeksa i datum upisa studenata sa indeksom vecim od 20140000,
+-- uredene opadajuce prema datumu upisa.
+
+-- select datupisa, indeks from da.dosije where indeks > 20140088 order by datupisa DESC; (datumupis--1)
+
+-- 10. Izdvojiti sva polaganja ispita sa ocenom 8, uredena prema datumu ispita opadajuce, a zatim prema broju indeksa rastucem poretu
+-- select datpolaganja, indeks from da.ispit where ocena=8 and status ='o' order by 1 asc, 2 desc;
+
+-- 11. Izdvojiti nazive predmeta koji nose izmedu 4 i 6 bodova, ukljucujuci obe granice.
+
+-- select naziv from da.predmet where espb between 4 and 6;
+
+-- 13. Izdvojiti identifikatore predmeta za koje postoji polaganje na kom je neki student dobio neparnu ocenu.
+
+-- select idpredmeta from da.ispit where ocena in (5,7,9);
+
+-- 14. Izdvojiti indekse studenata koji nisu dobili parnu ocenu na nekom ispitu.
+
+-- select idpredmeta from da.ispit where ocena not in (5,7,9);
+
+-- 15. Izdvojiti nazive predmeta koji u svom imenu imaju slovo a.
+
+-- select naziv from da.predmet where naziv like '%a%'; (negnde u tekstu)
+
+-- 16. Izdvojiti nazive predmeta ciji se naziv zavrsava slovom a™.
+-- select naziv from da.predmet where naziv like '%a';
+
+-- 17. Izdvojiti imena i prezimena studenata cije je ime duze od 5 karaktera, a pocinje slovom a
+-- select ime, prezime from da.dosije where ime like 'M_____%';
+
+-- 18. Izdvojiti razlicite nazive predmeta koji u svom nazivu imaju kao drugo slovo â€™%â€™, a pretposlednje \.
+-- koristi \% da bi se izdvojio bas taj karatker
+select naziv from da.predmet where naziv like '_\%%\\%';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
